@@ -13,6 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.12</junit.version>
+    <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
   </properties>
 
   <dependencies>
@@ -25,12 +26,29 @@
   </dependencies>
 
   <build>
-   <resources>
-     <resource>
-       <directory>src/main/scripts/</directory>
-     </resource>
-   </resources>
-   <plugins>
+    <plugins>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven-resources-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>src/main/scripts</directory>
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>

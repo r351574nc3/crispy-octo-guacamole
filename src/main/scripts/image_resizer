@@ -14,7 +14,7 @@ fi
 
 JAVA="$JAVA_HOME/bin/java"
 MAVEN="$M2_HOME/bin/mvn"
-IMAGE_RESIZER="target/image-resizer-1.0-SNAPSHOT.jar"
+IMAGE_RESIZER="../image-resizer-1.0-SNAPSHOT.jar"
 
 if [[ ! -f  $IMAGE_RESIZER ]]
 then
