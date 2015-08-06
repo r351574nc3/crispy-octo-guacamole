@@ -14,6 +14,7 @@ import java.util.List;
 import com.github.r351574nc3.imageresizer.io.FileUtil;
 
 /**
+ * Generic image resizer implementation. Uses 3 basic presets.
  *
  * @author Leo Przybylski
  */
