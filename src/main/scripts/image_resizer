@@ -1,0 +1,26 @@
+#!/bin/sh
+
+MAVEN=$(which mvn)
+
+if [[ $? -ne 0 ]]
+then
+    echo "Unable to find maven in the path. Please add maven to your path"
+fi
+
+if [[ -z "$JAVA_HOME" ]]
+then
+    echo "JAVA_HOME is not set properly. Please set JAVA_HOME to continue"
+fi
+
+JAVA="$JAVA_HOME/bin/java"
+MAVEN="$M2_HOME/bin/mvn"
+IMAGE_RESIZER="target/image-resizer-1.0-SNAPSHOT.jar"
+
+if [[ ! -f  $IMAGE_RESIZER ]]
+then
+    mvn install
+fi
+
+exec $JAVA -jar $IMAGE_RESIZER $@
+
+exit 0
